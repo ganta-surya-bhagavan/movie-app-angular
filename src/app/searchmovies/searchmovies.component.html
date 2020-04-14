@@ -1,0 +1,45 @@
+<form novalidate [formGroup]="searchForm" >
+
+    <div >
+        <label >Genre  </label>
+        <select 
+            formControlName="genre" id="roomType">
+            <option value="Drama">Drama</option>
+            <option value="Action">Action</option>
+            <option value="Crime">Crime</option>
+            <option value="Biography">Biography</option>
+            <option value="Thriller">Thriller</option>
+    </select>
+        
+        <div *ngIf="submitted && searchForm.controls.genre.errors" >
+            <div  *ngIf="searchForm.controls.genre.errors.required">
+        Select any genre  
+            </div>
+            
+    </div>
+    </div>
+<br>
+
+<input type="button"   value="search" (click)="searchMovies()">
+
+</form>
+
+
+    <table border="2" style="font-size: medium;"> 
+        <thead>
+            <tr>
+                <td>Movie Name</td>
+                <td>Movie Rating</td>
+                <td>Movie Genre</td>
+            </tr>
+        </thead>
+        <tbody *ngFor="let movie of movies">
+            <tr>
+                <td>{{movie.movieName}}</td>
+                <td>{{movie.rating}}</td>
+                <td>{{movie.genre}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+

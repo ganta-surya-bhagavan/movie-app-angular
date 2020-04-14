@@ -1,0 +1,57 @@
+<div class="col-lg-4"> 
+<form novalidate [formGroup]="addMovieForm" >
+    <div >
+        <label >Movie Name</label>
+        <input type="text"  formControlName="movieName" placeholder="Enter Movie Name " />
+        
+        <div *ngIf="submitted && addMovieForm.controls.movieName.errors" >
+            <div  *ngIf="addMovieForm.controls.movieName.errors.required">
+          Moviename  is required
+            </div>
+            <div  *ngIf="addMovieForm.controls.movieName.errors.pattern">
+          Only alphabets and numbers 
+ </div>
+    </div>
+    </div>
+
+
+
+     <div >
+        <label >Rating </label>
+        <input type="text"  formControlName="rating" placeholder="EnterRating  " />
+        
+        <div *ngIf="submitted && addMovieForm.controls.rating.errors" >
+            <div *ngIf="addMovieForm.controls.rating.errors.required">
+          Moviename  is required
+            </div>
+            <div *ngIf="addMovieForm.controls.rating.errors.min  ||  addMovieForm.controls.rating.errors.max">
+            rating in range of 1 to 10        
+        </div>
+    </div>
+     </div>
+
+    <div >
+        <label >Genre  </label>
+        <select 
+            formControlName="genre" >
+            <option value="Drama">Drama</option>
+            <option value="Action">Action</option>
+            <option value="Crime">Crime</option>
+            <option value="Biography">Biography</option>
+            <option value="Thriller">Thriller</option>
+    </select>
+        
+        <div *ngIf="submitted && addMovieForm.controls.genre.errors" >
+            <div *ngIf="addMovieForm.controls.genre.errors.required">
+        Select any genre  
+            </div>
+            
+    </div>
+    </div>
+<br>
+
+    <input type="button" value="add" (click)="addMovie()">
+
+  
+</form>
+
